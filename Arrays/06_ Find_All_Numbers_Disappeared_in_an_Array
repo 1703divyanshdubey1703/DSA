@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<int> missingnumbers(const vector<int>& num)
+{
+    int n = num.size();
+
+    //frequency array
+    vector<int> ans;
+    vector<int> frequency(n+1, 0);
+    for(int i=0;i<=n;i++)
+    {
+        frequency[num[i]]++;
+    }
+    
+    for(int i=1;i<n;i++)
+    {
+        if(frequency[i]==0)
+        {
+            ans.push_back(i);
+        }
+    }
+
+    return ans;
+
+    
+}
+
+int main()
+{
+    cout<<"Enter the size of the array: ";
+    int n;
+    cin>>n;
+
+    vector<int> arr(n);
+
+    //input for loop
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+
+vector<int> result = missingnumbers(arr);
+
+for(int i=0;i<result.size(); i++)
+{
+    cout<<result[i]<<" ";
+}
+
+}
